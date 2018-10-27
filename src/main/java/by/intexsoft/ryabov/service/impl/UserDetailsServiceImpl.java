@@ -20,15 +20,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserService userService;
 
-    /*public UserDetailsServiceImpl(UserService userService) {
-        this.userService = userService;
-    }*/
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.findByUsername(username);
         Set<GrantedAuthority> roles = new HashSet<>();
-        System.out.println(user.role.type);
         roles.add(new SimpleGrantedAuthority(user.role.type));
 
         return new org.springframework.security.core.userdetails.User(user.username,

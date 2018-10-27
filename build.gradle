@@ -16,7 +16,6 @@ task copyStatic(type: Copy, dependsOn: 'client:npmRunBuild') {
     into 'src/main/webapp'
 }
 
-
 war.dependsOn 'copyStatic'
 
 dependencies {
@@ -31,7 +30,6 @@ dependencies {
     compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.1.1.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.1.1.RELEASE'
     compileOnly 'org.projectlombok:lombok:1.18.2'
-
     apt 'org.projectlombok:lombok:1.18.2'
 }
 

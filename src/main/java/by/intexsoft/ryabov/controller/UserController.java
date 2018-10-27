@@ -3,6 +3,7 @@ package by.intexsoft.ryabov.controller;
 import by.intexsoft.ryabov.entity.User;
 import by.intexsoft.ryabov.service.IUserService;
 import by.intexsoft.ryabov.service.impl.UserService;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
  */
 @CrossOrigin
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
     private final IUserService userService;
 
@@ -27,8 +28,8 @@ public class UserController {
      * Get all users
      */
     @GetMapping
-    public List<User> findAll() {
-        return userService.findAll();
+    public org.springframework.security.core.userdetails.User getAuthorize(Authentication authentication) {
+        return (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
     }
 
     /**

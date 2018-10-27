@@ -5,13 +5,20 @@
          xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <b:bean id="userDetailsServiceImpl" class="by.intexsoft.ryabov.service.impl.UserDetailsServiceImpl"/>
+    <b:bean id="userDetailsServiceImpl" class="by.intexsoft.ryabov.service.impl.UserDetailsServiceImpl">
+    </b:bean>
 
     <http authentication-manager-ref="manager" auto-config="true" use-expressions="true">
         <intercept-url pattern="/api/**" access="hasRole('ROLE_USER')"/>
         <csrf disabled="true"/>
-        <security:form-login login-processing-url="/login" username-parameter="username"
-                             password-parameter="password"/>
+        <security:form-login login-processing-url="/login"
+                             username-parameter="username"
+                             password-parameter="password"
+                             login-page='/login'
+                             default-target-url='/api/user'
+                             always-use-default-target="false"/>
+        <security:logout logout-url="/logout"
+                         logout-success-url="/"/>
     </http>
 
     <b:bean id="encoder"
