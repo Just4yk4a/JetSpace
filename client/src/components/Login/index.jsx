@@ -6,21 +6,21 @@ import {inject, observer} from "mobx-react";
 @observer
 export default class Login extends React.Component {
 
-    signIn(){
+    signIn() {
         //this.props.authStore.changeRedirectToReferrer();
         this.props.authStore.signIn();
     }
 
-    logOut(){
+    logOut() {
         this.props.authStore.logOut();
     }
 
-    handleUsernameChange(event) {
-        this.props.authStore.setUsername(event.target.value);
+    handleUsernameChange({target: {value}}) {
+        this.props.authStore.setUsername(value);
     }
 
-    handlePasswordChange(event) {
-        this.props.authStore.setPassword(event.target.value);
+    handlePasswordChange({target: {value}}) {
+        this.props.authStore.setPassword(value);
     }
 
     render() {

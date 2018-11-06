@@ -7,6 +7,7 @@ import {Redirect} from "react-router-dom";
 export default class User extends React.Component {
     render() {
         const {user} = this.props.authStore;
+        console.log("User: " + user);
         return user == null ? <Redirect to="/"/> : (
             <div>
                 <h1>User page</h1>

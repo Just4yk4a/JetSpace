@@ -1,9 +1,8 @@
 package by.intexsoft.ryabov.controller;
 
 import by.intexsoft.ryabov.entity.User;
-import by.intexsoft.ryabov.service.IUserService;
+import by.intexsoft.ryabov.service.IDriverService;
 import by.intexsoft.ryabov.service.impl.UserService;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,13 +13,13 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping("/user")
-public class UserController {
-    private final IUserService userService;
+public class DriverController {
+    private final IDriverService userService;
 
     /**
      * Default constructor
      */
-    public UserController(UserService userService) {
+    public DriverController(UserService userService) {
         this.userService = userService;
     }
 
@@ -28,8 +27,8 @@ public class UserController {
      * Get all users
      */
     @GetMapping
-    public org.springframework.security.core.userdetails.User getAuthorize(Authentication authentication) {
-        return (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
+    public List<User> getAll() {
+        return null;
     }
 
     /**

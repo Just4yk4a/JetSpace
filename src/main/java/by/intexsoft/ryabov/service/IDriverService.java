@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Service for working with {@link User}
  */
-public interface IUserService {
+public interface IDriverService {
     /**
      * Find user by name
      */

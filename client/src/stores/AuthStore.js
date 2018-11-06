@@ -53,11 +53,10 @@ export default class AuthStore {
         fetch(CONTEXT_URL + 'login', params)
             .then(response => response.json())
             .then(action(user => {
+                console.log(user);
                 this.user = user;
             }))
-            .catch(e => {
-                console.log(e);
-            });
+            .catch(console.log);
     }
 
 
@@ -67,6 +66,6 @@ export default class AuthStore {
     logOut(){
         fetch(CONTEXT_URL + 'logout', {method: 'POST'})
             .then(() => this.user = null)
-            .catch(e => console.log(e));
+            .catch(console.log);
     }
 }

@@ -1,16 +1,16 @@
 package by.intexsoft.ryabov.service.impl;
 
 import by.intexsoft.ryabov.entity.User;
+import by.intexsoft.ryabov.repository.DriverRepository;
 import by.intexsoft.ryabov.repository.UserRepository;
-import by.intexsoft.ryabov.service.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import by.intexsoft.ryabov.service.IDriverService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService implements IUserService {
+public class UserService implements IDriverService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 

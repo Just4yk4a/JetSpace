@@ -22,6 +22,9 @@ public class User extends AbstractPersistable<Integer> {
     @Column
     public String password;
 
+    @Column
+    public String name;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="role_id")
     public Role role;
