@@ -1,7 +1,7 @@
 package by.intexsoft.ryabov.controller;
 
 import by.intexsoft.ryabov.entity.User;
-import by.intexsoft.ryabov.service.IDriverService;
+import by.intexsoft.ryabov.service.IUserService;
 import by.intexsoft.ryabov.service.impl.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class DriverController {
-    private final IDriverService userService;
+    private final IUserService userService;
 
     /**
      * Default constructor

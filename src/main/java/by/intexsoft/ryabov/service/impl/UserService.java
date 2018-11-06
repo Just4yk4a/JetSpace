@@ -1,16 +1,15 @@
 package by.intexsoft.ryabov.service.impl;
 
 import by.intexsoft.ryabov.entity.User;
-import by.intexsoft.ryabov.repository.DriverRepository;
 import by.intexsoft.ryabov.repository.UserRepository;
-import by.intexsoft.ryabov.service.IDriverService;
+import by.intexsoft.ryabov.service.IUserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService implements IDriverService {
+public class UserService implements IUserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -26,7 +25,7 @@ public class UserService implements IDriverService {
     }
 
     @Override
-    public List<User> findAll() {
+    public List<User> getAll() {
         return userRepository.findAll();
     }
 

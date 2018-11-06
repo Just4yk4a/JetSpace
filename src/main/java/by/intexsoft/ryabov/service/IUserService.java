@@ -7,16 +7,16 @@ import java.util.List;
 /**
  * Service for working with {@link User}
  */
-public interface IDriverService {
+public interface IUserService {
     /**
      * Find user by name
      */
     User findByUsername(String username);
 
     /**
-     * Find all user
+     * Get all user
      */
-    List<User> findAll();
+    List<User> getAll();
 
     /**
      * Add user to DB
