@@ -19,19 +19,40 @@ public class UserService implements IUserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
+    /**
+     * Find user by username
+     */
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
+    /**
+     * Find all users
+     */
     @Override
-    public List<User> getAll() {
-        return userRepository.findAll();
+    public List<User> findAll() {
+        List<User> users = userRepository.findAll();
+        for (User user :
+                users) {
+            user.password = null;
+        }
+        return users;
     }
 
+    /**
+     * Save user
+     */
     @Override
     public User save(User user) {
-        user.password = bCryptPasswordEncoder.encode(user.password);
-        return userRepository.save(user);
+            return userRepository.save(user);
+    }
+
+    /**
+     * Delete user by id
+     */
+    @Override
+    public void delete(int id) {
+        userRepository.deleteById(id);
     }
 }

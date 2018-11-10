@@ -1,8 +1,8 @@
 package by.intexsoft.ryabov.controller;
 
+import by.intexsoft.ryabov.entity.Driver;
 import by.intexsoft.ryabov.entity.User;
-import by.intexsoft.ryabov.service.IUserService;
-import by.intexsoft.ryabov.service.impl.UserService;
+import by.intexsoft.ryabov.service.IDriverService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,30 +12,23 @@ import java.util.List;
  */
 @CrossOrigin
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/drivers")
 public class DriverController {
-    private final IUserService userService;
+    private final IDriverService driverService;
 
     /**
      * Default constructor
      */
-    public DriverController(UserService userService) {
-        this.userService = userService;
+    public DriverController(IDriverService driverService) {
+        this.driverService = driverService;
     }
+
 
     /**
      * Get all users
      */
     @GetMapping
-    public List<User> getAll() {
-        return null;
-    }
-
-    /**
-     * Add new user and returns saved object
-     */
-    @PostMapping
-    public User create(@RequestBody User user) {
-        return userService.save(user);
+    public List<Driver> getAll() {
+        return driverService.getAll();
     }
 }

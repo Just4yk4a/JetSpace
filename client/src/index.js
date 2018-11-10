@@ -8,10 +8,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Main from './components/Main';
 import AuthStore from "./stores/AuthStore";
 import TestStore from "./stores/TestStore";
+import WorkerStore from "./stores/WorkerStore";
 
 const stores = {
     authStore: new AuthStore(),
-    testStore: new TestStore()
+    testStore: new TestStore(),
+    workerStore: new WorkerStore()
 };
 
 ReactDOM.render(

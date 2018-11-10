@@ -31,7 +31,7 @@ export default class AuthStore {
     }
 
     /**
-     * Get auth user from server
+     * Get auth newUser from server
      */
     signIn() {
         const paramsUser = {

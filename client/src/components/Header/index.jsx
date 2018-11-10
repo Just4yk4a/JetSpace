@@ -41,12 +41,15 @@ export default class Header extends React.Component {
     }
 
     getUserDropdown(user) {
+        const {authority} = user.authorities[0];
         return (
             <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                     {user.username}
                 </DropdownToggle>
                 <DropdownMenu right>
+                    {authority === "ADMIN" && <DropdownItem tag={Link} to="/drivers">Workers</DropdownItem>}
+                    {authority === "ADMIN" && <DropdownItem tag={Link} to="/drivers/add">Add new worker</DropdownItem>}
                     <DropdownItem onClick={() => this.logOut()}>
                         Log out
                     </DropdownItem>

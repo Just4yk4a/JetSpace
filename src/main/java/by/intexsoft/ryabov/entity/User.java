@@ -13,7 +13,7 @@ public class User extends AbstractPersistable<Integer> {
     /**
      * Contains user name
      */
-    @Column
+    @Column(unique=true)
     public String username;
 
     /**

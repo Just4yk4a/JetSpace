@@ -4,7 +4,12 @@ export default class TestStore {
     message = "";
 
     getMessage(){
-        fetch(CONTEXT_URL + "api/welcome")
+        const params = {
+            method: 'GET',
+            body: {},
+            headers: {'Content-Type': 'application/plain'}
+        };
+        fetch(CONTEXT_URL + "api/welcome", params)
             .then(response => response.text())
             .then(message => console.log(message))
     }

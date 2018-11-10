@@ -16,10 +16,15 @@ public interface IUserService {
     /**
      * Get all user
      */
-    List<User> getAll();
+    List<User> findAll();
 
     /**
      * Add user to DB
      */
     User save(User user);
+
+    /**
+     * Delete user by id
+     */
+    void delete(int id);
 }
