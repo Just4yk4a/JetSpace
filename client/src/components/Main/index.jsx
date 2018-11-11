@@ -7,6 +7,7 @@ import Header from "../Header";
 import Welcome from "../Welcome";
 import WorkerAdd from "../WorkerAdd";
 import Workers from "../Workers";
+import Order from "../Order";
 
 @inject('authStore', 'testStore')
 export default class Main extends React.Component {
@@ -19,6 +20,7 @@ export default class Main extends React.Component {
                     <Route path="/login" component={Login}/>
                     <Route exact path="/drivers" component={Workers}/>
                     <Route path="/drivers/add" component={WorkerAdd}/>
+                    <Route exact path="/order" component={Order}/>
                     <AdminRoute path="/user" user={this.props.authStore.user} component={User}/>
                     <Route path='*' component={() => <Redirect to={{pathname: '/welcome'}}/>}/>
                 </Switch>

@@ -9,11 +9,15 @@ import Main from './components/Main';
 import AuthStore from "./stores/AuthStore";
 import TestStore from "./stores/TestStore";
 import WorkerStore from "./stores/WorkerStore";
+import CarStore from "./stores/CarStore";
+import OrderStore from "./stores/OrderStore";
 
 const stores = {
     authStore: new AuthStore(),
     testStore: new TestStore(),
-    workerStore: new WorkerStore()
+    workerStore: new WorkerStore(),
+    carStore: new CarStore(),
+    orderStore: new OrderStore()
 };
 
 ReactDOM.render(
