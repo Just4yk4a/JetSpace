@@ -9,22 +9,22 @@ import java.util.List;
  */
 public interface IUserService {
     /**
-     * Find user by name
+     * Find {@link User} by name
      */
     User findByUsername(String username);
 
     /**
-     * Get all user
+     * Get all {@link User}
      */
     List<User> findAll();
 
     /**
-     * Add user to DB
+     * Add {@link User} to DB
      */
     User save(User user);
 
     /**
-     * Delete user by id
+     * Delete {@link User} by id
      */
     void delete(int id);
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import {inject, observer} from "mobx-react";
+import {Redirect} from "react-router-dom";
 
 
 @inject('authStore')
@@ -7,7 +8,6 @@ import {inject, observer} from "mobx-react";
 export default class Login extends React.Component {
 
     signIn() {
-        //this.props.authStore.changeRedirectToReferrer();
         this.props.authStore.signIn();
     }
 
@@ -24,11 +24,9 @@ export default class Login extends React.Component {
     }
 
     render() {
-        /*const { from } = this.props.location.state || { from: { pathname: '/' } };
-        const { redirectToReferrer } = this.props.authStore;*/
-
         return (
             <div>
+                {this.props.authStore.user == null ? null : <Redirect to={"/"}/> }
                 <form>
                     <input type="text" name="username" onChange={this.handleUsernameChange.bind(this)}/>
                     <br/>

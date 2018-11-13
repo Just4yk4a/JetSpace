@@ -7,17 +7,33 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service for {@link Car} entity
+ */
 @Service
 public class CarService implements ICarService {
-
     private final CarRepository carRepository;
 
+    /**
+     * Constructor
+     */
     public CarService(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
 
+    /**
+     * Find all {@link Car}s
+     */
     @Override
-    public List<Car> getAll() {
+    public List<Car> findAll() {
         return carRepository.findAll();
+    }
+
+    /**
+     * Find {@link Car} by id
+     */
+    @Override
+    public Car findById(int id) {
+        return carRepository.findById(id).get();
     }
 }

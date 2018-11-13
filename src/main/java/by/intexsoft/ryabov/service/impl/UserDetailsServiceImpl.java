@@ -11,14 +11,23 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.Set;
 
+/**
+ * Service for auth user
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserService userService;
 
+    /**
+     * Constructor
+     */
     public UserDetailsServiceImpl(UserService userService) {
         this.userService = userService;
     }
 
+    /**
+     * Get authorised {@link User}
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.findByUsername(username);

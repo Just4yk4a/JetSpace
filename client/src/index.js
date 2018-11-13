@@ -11,13 +11,15 @@ import TestStore from "./stores/TestStore";
 import WorkerStore from "./stores/WorkerStore";
 import CarStore from "./stores/CarStore";
 import OrderStore from "./stores/OrderStore";
+import DriverStore from "./stores/DriverStore";
 
 const stores = {
     authStore: new AuthStore(),
     testStore: new TestStore(),
     workerStore: new WorkerStore(),
     carStore: new CarStore(),
-    orderStore: new OrderStore()
+    orderStore: new OrderStore(),
+    driverStore: new DriverStore()
 };
 
 ReactDOM.render(

@@ -4,10 +4,18 @@ import by.intexsoft.ryabov.entity.Car;
 
 import java.util.List;
 
+/**
+ * Service for working with {@link Car}
+ */
 public interface ICarService {
 
     /**
      * Get all cars
      */
-    List<Car> getAll();
+    List<Car> findAll();
+
+    /**
+     * Find {@link Car} by id
+     */
+    Car findById(int id);
 }

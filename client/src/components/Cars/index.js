@@ -41,7 +41,7 @@ export default class Cars extends React.Component{
                 <td>{car.weight}</td>
                 <td>{car.volume}</td>
                 <td>{car.category.type}</td>
-                <td><Link to="/order" onClick={() => this.makeOrder(car.id)}><button>Order</button></Link></td>
+                <td><Link to="/orders/add" onClick={() => this.makeOrder(car.id)}><button>Order</button></Link></td>
             </tr>
         ))
     }

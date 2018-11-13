@@ -13,7 +13,7 @@ public class User extends AbstractPersistable<Integer> {
     /**
      * Contains user name
      */
-    @Column(unique=true)
+    @Column(unique = true)
     public String username;
 
     /**
@@ -22,10 +22,16 @@ public class User extends AbstractPersistable<Integer> {
     @Column
     public String password;
 
+    /**
+     * Contains user name
+     */
     @Column
     public String name;
 
+    /**
+     * Contains user {@link Role}
+     */
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="role_id")
+    @JoinColumn(name = "role_id")
     public Role role;
 }

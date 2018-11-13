@@ -8,7 +8,7 @@ import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
 
 @inject('orderStore')
 @observer
-export default class Order extends React.Component {
+export default class OrderAdd extends React.Component {
     handleChangeDate(date) {
         this.props.orderStore.setDate(date);
     }
@@ -41,7 +41,7 @@ export default class Order extends React.Component {
                                 placeholderText="Select a date"/>
                         </Col>
                     </FormGroup>
-                    <Button onClick={() => this.props.orderStore.checkout()}>Print</Button>
+                    <Button onClick={() => this.props.orderStore.checkout()}>Add</Button>
                 </Form>
             </div>
         );

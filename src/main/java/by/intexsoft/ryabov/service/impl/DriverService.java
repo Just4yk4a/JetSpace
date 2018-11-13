@@ -7,16 +7,25 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service for {@link Driver} entity
+ */
 @Service
 public class DriverService implements IDriverService {
     private final DriverRepository driverRepository;
 
+    /**
+     * Constructor
+     */
     public DriverService(DriverRepository driverRepository) {
         this.driverRepository = driverRepository;
     }
 
+    /**
+     * Find all {@link Driver}s
+     */
     @Override
-    public List<Driver> getAll() {
+    public List<Driver> findAll() {
         return driverRepository.findAll();
     }
 }

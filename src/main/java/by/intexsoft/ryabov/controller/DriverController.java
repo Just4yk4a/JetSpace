@@ -1,14 +1,13 @@
 package by.intexsoft.ryabov.controller;
 
 import by.intexsoft.ryabov.entity.Driver;
-import by.intexsoft.ryabov.entity.User;
 import by.intexsoft.ryabov.service.IDriverService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
- * Controller for working with user
+ * Controller for working with {@link Driver}
  */
 @CrossOrigin
 @RestController
@@ -29,6 +28,6 @@ public class DriverController {
      */
     @GetMapping
     public List<Driver> getAll() {
-        return driverService.getAll();
+        return driverService.findAll();
     }
 }

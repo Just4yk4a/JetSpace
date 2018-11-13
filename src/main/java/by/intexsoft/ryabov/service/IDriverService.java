@@ -4,6 +4,13 @@ import by.intexsoft.ryabov.entity.Driver;
 
 import java.util.List;
 
+/**
+ * Service for working with {@link  Driver}
+ */
 public interface IDriverService {
-    List<Driver> getAll();
+
+    /**
+     * Get all {@link Driver}
+     */
+    List<Driver> findAll();
 }

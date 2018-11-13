@@ -8,19 +8,24 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service for {@link User} entity
+ */
 @Service
 public class UserService implements IUserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
+    /**
+     * Constructor
+     */
     public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     /**
-     * Find user by username
+     * Find {@link User} by username
      */
     @Override
     public User findByUsername(String username) {
@@ -28,7 +33,7 @@ public class UserService implements IUserService {
     }
 
     /**
-     * Find all users
+     * Find all {@link User}s
      */
     @Override
     public List<User> findAll() {
@@ -41,15 +46,15 @@ public class UserService implements IUserService {
     }
 
     /**
-     * Save user
+     * Save {@link User}
      */
     @Override
     public User save(User user) {
-            return userRepository.save(user);
+        return userRepository.save(user);
     }
 
     /**
-     * Delete user by id
+     * Delete {@link User} by id
      */
     @Override
     public void delete(int id) {

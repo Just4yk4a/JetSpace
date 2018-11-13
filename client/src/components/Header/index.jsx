@@ -48,8 +48,9 @@ export default class Header extends React.Component {
                     {user.username}
                 </DropdownToggle>
                 <DropdownMenu right>
-                    {authority === "ADMIN" && <DropdownItem tag={Link} to="/drivers">Workers</DropdownItem>}
-                    {authority === "ADMIN" && <DropdownItem tag={Link} to="/drivers/add">Add new worker</DropdownItem>}
+                    {authority === "ADMIN" && <DropdownItem tag={Link} to="/workers">Workers</DropdownItem>}
+                    {authority === "ADMIN" && <DropdownItem tag={Link} to="/workers/add">Add new worker</DropdownItem>}
+                    {authority === "DISPATCHER" && <DropdownItem tag={Link} to="/orders">Orders</DropdownItem>}
                     <DropdownItem onClick={() => this.logOut()}>
                         Log out
                     </DropdownItem>

@@ -37,7 +37,7 @@ public class UserController {
      */
     @PostMapping
     public User create(@RequestBody User user) {
-        if (userService.findByUsername(user.username) != null){
+        if (userService.findByUsername(user.username) != null) {
             return null;
         }
         return userService.save(user);
