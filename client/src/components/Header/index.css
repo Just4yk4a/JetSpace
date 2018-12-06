@@ -1,0 +1,11 @@
+.navbar {
+    background-color: #929fa8;
+}
+
+.login {
+    border: 10px yellow;
+    border-radius: 2px;
+    background-color: #c6c9cd;
+    padding-left: 2px;
+    padding-right: 2px;
+}

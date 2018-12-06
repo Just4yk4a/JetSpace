@@ -2,6 +2,7 @@ package by.intexsoft.ryabov.service;
 
 import by.intexsoft.ryabov.entity.User;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -9,17 +10,27 @@ import java.util.List;
  */
 public interface IUserService {
     /**
-     * Find user by name
+     * Find {@link User} by name
      */
     User findByUsername(String username);
 
     /**
-     * Find all user
+     * Get all {@link User}
      */
     List<User> findAll();
 
     /**
-     * Add user to DB
+     * Add {@link User} to DB
      */
     User save(User user);
+
+    /**
+     * Delete {@link User} by id
+     */
+    void delete(int id);
+
+    /**
+     * Find free {@link User}s by date
+     */
+    List<User> getFreeUsersByDate(Date date);
 }

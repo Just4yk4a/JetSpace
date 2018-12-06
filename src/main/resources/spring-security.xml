@@ -3,19 +3,31 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns:security="http://www.springframework.org/schema/security"
          xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <b:bean id="userDetailsServiceImpl" class="by.intexsoft.ryabov.service.impl.UserDetailsServiceImpl"/>
-
-    <http authentication-manager-ref="manager" auto-config="true" use-expressions="true">
-        <intercept-url pattern="/api/**" access="hasRole('ROLE_USER')"/>
-        <csrf disabled="true"/>
-        <security:form-login login-processing-url="/login" username-parameter="username"
-                             password-parameter="password"/>
-    </http>
-
+    <b:bean id="userDetailsServiceImpl" class="by.intexsoft.ryabov.service.impl.UserDetailsServiceImpl">
+        <b:constructor-arg ref="userService"/>
+    </b:bean>
     <b:bean id="encoder"
             class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
+    <security:http authentication-manager-ref="manager" auto-config="true" use-expressions="true">
+        <security:intercept-url pattern="/login" access="permitAll"/>
+        <security:intercept-url pattern="/api/workers" access="hasAnyAuthority('ADMIN', 'DISPATCHER')"/>
+        <security:intercept-url pattern="/api/categories" access="hasAnyAuthority('ADMIN')"/>
+        <security:intercept-url pattern="/api/orders" access="permitAll"/>
+        <security:intercept-url pattern="/api/car" access="permitAll"/>
+        <security:intercept-url pattern="/**" access="permitAll"/>
+        <security:csrf disabled="true"/>
+        <security:form-login login-processing-url="/login"
+                             username-parameter="username"
+                             password-parameter="password"
+                             login-page="/login"
+                             default-target-url='/api/login'
+                             always-use-default-target="true"/>
+        <security:logout logout-url="/logout"
+                         logout-success-url="/"/>
+    </security:http>
 
     <authentication-manager id="manager">
         <authentication-provider user-service-ref="userDetailsServiceImpl">

@@ -5,8 +5,14 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
+/**
+ * Role entity
+ */
 @Entity
 public class Role extends AbstractPersistable<Integer> {
-    @Column(name="role")
+    /**
+     * Contain type of role
+     */
+    @Column(name = "role")
     public String type;
 }
