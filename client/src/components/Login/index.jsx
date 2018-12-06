@@ -1,6 +1,9 @@
+import "./index.css";
+
 import React from "react";
 import {inject, observer} from "mobx-react";
 import {Redirect} from "react-router-dom";
+import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
 
 
 @inject('authStore')
@@ -24,18 +27,39 @@ export default class Login extends React.Component {
     }
 
     render() {
+        const {error} = this.props.authStore;
         return (
-            <div>
-                {this.props.authStore.user == null ? null : <Redirect to={"/"}/> }
-                <form>
-                    <input type="text" name="username" onChange={this.handleUsernameChange.bind(this)}/>
-                    <br/>
-                    <input type="password" name="password" onChange={this.handlePasswordChange.bind(this)}/>
-                    <br/>
-                </form>
-                <button onClick={this.signIn.bind(this)}>Войти</button>
-                <br/>
-                <button onClick={this.logOut.bind(this)}>Выйти</button>
+            <div className="login-form">
+                {this.props.authStore.user == null ? null : <Redirect to={"/"}/>}
+                <h2 className={"sign-in-header"}>Sign In</h2>
+                <Form className="form">
+                    <Col>
+                        <FormGroup>
+                            <Label>Email</Label>
+                            <Input
+                                type="text"
+                                name="username"
+                                id="username"
+                                placeholder="Username"
+                                onChange={this.handleUsernameChange.bind(this)}
+                            />
+                        </FormGroup>
+                    </Col>
+                    <Col>
+                        <FormGroup>
+                            <Label for="examplePassword">Password</Label>
+                            <Input
+                                type="password"
+                                name="password"
+                                id="Password"
+                                placeholder="********"
+                                onChange={this.handlePasswordChange.bind(this)}
+                            />
+                        </FormGroup>
+                    </Col>
+                    {error === null ? null : <p className={"error-message"}>{error}</p>}
+                    <Button className={"button-submit"} onClick={this.signIn.bind(this)}>Submit</Button>
+                </Form>
             </div>
         );
     }

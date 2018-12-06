@@ -6,6 +6,7 @@ import by.intexsoft.ryabov.service.IUserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -50,7 +51,10 @@ public class UserService implements IUserService {
      */
     @Override
     public User save(User user) {
-        return userRepository.save(user);
+        user.password = bCryptPasswordEncoder.encode(user.password);
+        User regUser = userRepository.save(user);
+        regUser.password = null;
+        return regUser;
     }
 
     /**
@@ -59,5 +63,14 @@ public class UserService implements IUserService {
     @Override
     public void delete(int id) {
         userRepository.deleteById(id);
+    }
+
+    /**
+     * Find free {@link User}s by date
+     */
+    @Override
+    public List<User> getFreeUsersByDate(Date date) {
+        System.out.println("===============================" + date);
+        return userRepository.getFreeUsersByDate(date);
     }
 }

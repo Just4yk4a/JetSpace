@@ -13,8 +13,10 @@
 
     <security:http authentication-manager-ref="manager" auto-config="true" use-expressions="true">
         <security:intercept-url pattern="/login" access="permitAll"/>
-        <security:intercept-url pattern="/api/welcome" access="hasAuthority('ADMIN')"/>
-        <security:intercept-url pattern="/api/users" access="hasAuthority('ADMIN')"/>
+        <security:intercept-url pattern="/api/workers" access="hasAnyAuthority('ADMIN', 'DISPATCHER')"/>
+        <security:intercept-url pattern="/api/categories" access="hasAnyAuthority('ADMIN')"/>
+        <security:intercept-url pattern="/api/orders" access="permitAll"/>
+        <security:intercept-url pattern="/api/car" access="permitAll"/>
         <security:intercept-url pattern="/**" access="permitAll"/>
         <security:csrf disabled="true"/>
         <security:form-login login-processing-url="/login"

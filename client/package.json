@@ -14,7 +14,7 @@
     "reactstrap": "^6.5.0"
   },
   "scripts": {
-    "start": "cross-env HTTPS=false REACT_APP_API_URL=http://localhost:8080/JetSpace/ react-scripts start",
+    "start": "cross-env HTTPS=false REACT_APP_API_URL=http://localhost:8080/JetSpace react-scripts start",
     "build": "react-scripts build"
   },
   "homepage": "https://example.com/JetSpace"

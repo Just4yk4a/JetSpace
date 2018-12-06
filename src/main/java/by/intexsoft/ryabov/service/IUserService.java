@@ -2,6 +2,7 @@ package by.intexsoft.ryabov.service;
 
 import by.intexsoft.ryabov.entity.User;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,4 +28,9 @@ public interface IUserService {
      * Delete {@link User} by id
      */
     void delete(int id);
+
+    /**
+     * Find free {@link User}s by date
+     */
+    List<User> getFreeUsersByDate(Date date);
 }

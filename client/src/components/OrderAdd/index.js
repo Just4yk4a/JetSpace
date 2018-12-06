@@ -13,7 +13,7 @@ export default class OrderAdd extends React.Component {
         this.props.orderStore.setDate(date);
     }
 
-    handlePhoneChange({target: {value}}){
+    handlePhoneChange({target: {value}}) {
         this.props.orderStore.setPhone(value);
     };
 
@@ -25,7 +25,8 @@ export default class OrderAdd extends React.Component {
                     <FormGroup row>
                         <Label for="phone" sm={2}>Number:</Label>
                         <Col sm={8}>
-                            <Input type="phone" id="phone" placeholder="PHONE" onChange={this.handlePhoneChange.bind(this)}/>
+                            <Input type="phone" id="phone" placeholder="PHONE"
+                                   onChange={this.handlePhoneChange.bind(this)}/>
                         </Col>
                     </FormGroup>
                     <FormGroup row>

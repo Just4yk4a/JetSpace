@@ -1,3 +1,5 @@
+import "./index.css"
+
 import React from 'react';
 import {Table} from "reactstrap";
 import {inject, observer} from "mobx-react";
@@ -15,11 +17,12 @@ export default class Workers extends React.Component {
     }
 
     render() {
-        return (<div>
-                <Table striped>
+        return (
+            <div className={'workers'}>
+                <h2 className={'workers-header'}>Workers:</h2>
+                <Table striped className={'workers-table'}>
                     <thead>
                     <tr>
-                        <th>#</th>
                         <th>Name</th>
                         <th>Username</th>
                         <th>Role</th>
@@ -37,7 +40,6 @@ export default class Workers extends React.Component {
         const {users} = this.props.workerStore;
         return users.map(user => (
             <tr key={user.id}>
-                <td>{user.id}</td>
                 <td>{user.name}</td>
                 <td>{user.username}</td>
                 <td>{user.role.type}</td>

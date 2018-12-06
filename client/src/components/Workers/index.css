@@ -1,0 +1,16 @@
+.workers-header {
+    text-align: center;
+}
+
+.workers {
+    padding: 20px 20px 20px 20px;
+}
+
+th, tr {
+    text-align: center;
+    width: 25%;
+}
+
+.workers-table {
+    box-shadow: 0 0 0 1px #4b4b4b;
+}

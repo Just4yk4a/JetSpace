@@ -2,6 +2,7 @@ package by.intexsoft.ryabov.service;
 
 import by.intexsoft.ryabov.entity.Order;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,7 +16,17 @@ public interface IOrderService {
     Order save(Order order);
 
     /**
-     * Get all {@link Order}
+     * Find all {@link Order}
      */
     List<Order> findAll();
+
+    /**
+     * Find all {@link Order}s by user id
+     */
+    List<Order> findAllByUserId(int id);
+
+    /**
+     * Delete by id
+     */
+    void delete(int id);
 }

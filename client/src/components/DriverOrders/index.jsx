@@ -3,30 +3,31 @@ import "./index.css";
 import * as moment from "moment";
 
 import React from 'react';
-import "react-datepicker/dist/react-datepicker.css";
 import {inject, observer} from "mobx-react";
-import {Table} from "reactstrap";
-import DropdownDrivers from "../DropdownDrivers";
+import {Button, Table} from "reactstrap";
 
-@inject('orderStore', 'carStore')
+@inject('orderStore')
 @observer
-export default class Orders extends React.Component {
+export default class DriverOrders extends React.Component {
 
     componentDidMount() {
-        this.props.orderStore.findAll();
-        this.props.carStore.getAll();
+        this.props.orderStore.findAllByDriverId(JSON.parse(sessionStorage.getItem('user')).id);
+    }
+
+    deleteById(id) {
+        this.props.orderStore.deleteById(id);
     }
 
     render() {
         return (
-            <div className={"orders"}>
-                <h2 className={"orders-header"}>Orders:</h2>
-                <Table striped className={"orders-table"}>
+            <div className={"d-orders"}>
+                <h2 className={"d-orders-header"}>Orders:</h2>
+                <Table striped className={"d-orders-table"}>
                     <thead>
                     <tr>
                         <th>Phone number</th>
                         <th>Date</th>
-                        <th>Driver</th>
+                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,9 +44,7 @@ export default class Orders extends React.Component {
             <tr key={order.id}>
                 <td>{order.phone}</td>
                 <td>{moment(order.date).format("dddd, MMMM Do YYYY")}</td>
-                <td>
-                    <DropdownDrivers order={order}/>
-                </td>
+                <td><Button onClick={() => this.deleteById(order.id)}>Done</Button></td>
             </tr>
         ))
     }

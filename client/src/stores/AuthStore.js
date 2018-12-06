@@ -1,33 +1,41 @@
 import {action, observable} from "mobx";
 
-const CONTEXT_URL = process.env.REACT_APP_API_URL || '';
+const CONTEXT_URL = process.env.REACT_APP_API_URL || '/JetSpace';
 
+/**
+ * Store for working with authorisation
+ */
 export default class AuthStore {
+    /**
+     * Auth user
+     */
     @observable
-    user = null;
-    @observable
-    redirectToReferrer = false;
+    user = JSON.parse(sessionStorage.getItem('user'));
 
+    @observable
+    error = null;
+
+    /**
+     * Username of user
+     */
     username = '';
+    /**
+     * Password of user
+     */
     password = '';
 
     /**
      * Set new username
      */
-    setUsername(username){
+    setUsername(username) {
         this.username = username;
     }
 
     /**
      * Set new password
      */
-    setPassword(password){
+    setPassword(password) {
         this.password = password;
-    }
-
-    @action
-    changeRedirectToReferrer() {
-        this.redirectToReferrer = !this.redirectToReferrer;
     }
 
     /**
@@ -50,22 +58,26 @@ export default class AuthStore {
             body: formData,
             headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
         };
-        fetch(CONTEXT_URL + 'login', params)
+        fetch(CONTEXT_URL + '/login', params)
             .then(response => response.json())
             .then(action(user => {
-                console.log(user);
+                sessionStorage.setItem('user', JSON.stringify(user));
                 this.user = user;
             }))
-            .catch(console.log);
+            .catch(action(error => this.error = "Invalid username or password"));
     }
 
 
     /**
-     * logOut
+     * log out
      */
-    logOut(){
-        fetch(CONTEXT_URL + 'logout', {method: 'POST'})
-            .then(() => this.user = null)
+    logOut() {
+        fetch(CONTEXT_URL + '/logout', {method: 'POST'})
+            .then(() => {
+                this.user = null;
+                this.error = null;
+                sessionStorage.clear();
+            })
             .catch(console.log);
     }
 }

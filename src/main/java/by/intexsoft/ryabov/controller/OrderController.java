@@ -22,7 +22,23 @@ public class OrderController {
     }
 
     /**
-     * Get all users
+     * Find all {@link Order}s
+     */
+    @GetMapping
+    public List<Order> getAll() {
+        return orderService.findAll();
+    }
+
+    /**
+     * Find all {@link Order}a by user id
+     */
+    @GetMapping("/driver={id}")
+    public List<Order> findAllByUserId(@PathVariable("id") int id) {
+        return orderService.findAllByUserId(id);
+    }
+
+    /**
+     * Save {@link Order}
      */
     @PostMapping
     public Order save(@RequestBody Order order) {
@@ -30,10 +46,11 @@ public class OrderController {
     }
 
     /**
-     * Get all {@link Order}s
+     * Delete {@link Order} by id
      */
-    @GetMapping
-    public List<Order> getAll() {
-        return orderService.findAll();
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") int id) {
+        orderService.delete(id);
     }
+
 }

@@ -1,0 +1,19 @@
+.login-form {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sign-in-header {
+    text-align: center;
+}
+
+.button-submit {
+    margin-left: 40%;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+}

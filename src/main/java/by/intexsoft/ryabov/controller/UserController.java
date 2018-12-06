@@ -3,9 +3,9 @@ package by.intexsoft.ryabov.controller;
 import by.intexsoft.ryabov.entity.User;
 import by.intexsoft.ryabov.service.IUserService;
 import by.intexsoft.ryabov.service.impl.UserService;
-import jdk.nashorn.internal.parser.JSONParser;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,6 +30,15 @@ public class UserController {
     @GetMapping
     public List<User> getAll() {
         return userService.findAll();
+    }
+
+    /**
+     * Get users
+     */
+    @GetMapping(value = "/{date}")
+    public List<User> getUsersByDate(@PathVariable("date") long date) {
+        Date dd = new Date(date);
+        return userService.getFreeUsersByDate(dd);
     }
 
     /**
