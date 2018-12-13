@@ -36,4 +36,20 @@ public class CarController {
     public Car load(@PathVariable(value = "id") int id) {
         return carService.findById(id);
     }
+
+    /**
+     * Save {@link Car}
+     */
+    @PostMapping
+    public Car save(@RequestBody Car car) {
+        return carService.save(car);
+    }
+
+    /**
+     * Delete {@link Car} by id
+     */
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") int id) {
+        carService.delete(id);
+    }
 }

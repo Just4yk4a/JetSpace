@@ -4,8 +4,6 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import java.util.List;
 
 /**
  * Category entity
@@ -13,7 +11,7 @@ import java.util.List;
 @Entity
 public class Category extends AbstractPersistable<Integer> {
     /**
-     * Contains type of category
+     * Contains type of {@link Category}
      */
     @Column(name = "type")
     public String type;

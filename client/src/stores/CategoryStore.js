@@ -1,4 +1,4 @@
-import {action, observable} from "mobx";
+import {action, observable} from 'mobx';
 
 const CONTEXT_URL = process.env.REACT_APP_API_URL || '/JetSpace';
 const CATEGORIES_URL = CONTEXT_URL + '/api/categories';

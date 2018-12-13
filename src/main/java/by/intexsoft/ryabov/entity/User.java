@@ -1,6 +1,5 @@
 package by.intexsoft.ryabov.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
@@ -21,7 +20,6 @@ public class User extends AbstractPersistable<Integer> {
     /**
      * Contains user password
      */
-    @JsonIgnore
     @Column
     public String password;
 

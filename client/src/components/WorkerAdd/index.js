@@ -1,12 +1,18 @@
-import "./index.css";
+import './index.css';
 
 import React from 'react';
-import {inject, observer} from "mobx-react";
+import {inject, observer} from 'mobx-react';
 import {Button, Col, CustomInput, Form, FormGroup, Input, Label} from 'reactstrap';
 
-@inject("workerStore", "categoryStore")
+/**
+ * Class for add workers
+ */
+@inject('workerStore', 'categoryStore')
 @observer
 export default class WorkerAdd extends React.Component {
+    /**
+     * Constructor
+     */
     constructor(props) {
         super(props);
         this.state = {
@@ -15,22 +21,37 @@ export default class WorkerAdd extends React.Component {
         this.handleRoleChange = this.handleRoleChange.bind(this);
     }
 
+    /**
+     * Load category when component was mount
+     */
     componentDidMount() {
         this.props.categoryStore.findAll();
     }
 
+    /**
+     * Category handle
+     */
     handleCategoryChange(id) {
         this.props.workerStore.setCategory(id);
     }
 
+    /**
+     * Username handle
+     */
     handleUsernameChange({target: {value}}) {
         this.props.workerStore.setUsername(value);
     }
 
+    /**
+     * Password handle
+     */
     handlePasswordChange({target: {value}}) {
         this.props.workerStore.setPassword(value);
     }
 
+    /**
+     * Role handle
+     */
     handleRoleChange(value) {
         this.props.workerStore.setRole(value);
         this.setState({
@@ -38,6 +59,9 @@ export default class WorkerAdd extends React.Component {
         });
     }
 
+    /**
+     * Name handle
+     */
     handleNameChange({target: {value}}) {
         this.props.workerStore.setName(value);
     }
@@ -49,23 +73,23 @@ export default class WorkerAdd extends React.Component {
                 <h2 className={'header'}>Add new worker!</h2>
                 <Form className={'worker-form'}>
                     <FormGroup row>
-                        <Label for="username" sm={2}>Username:</Label>
+                        <Label for='username' sm={2}>Username:</Label>
                         <Col sm={8}>
-                            <Input type="username" id="username" placeholder="username"
+                            <Input type='username' id='username' placeholder='username'
                                    onChange={this.handleUsernameChange.bind(this)}/>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="password" sm={2}>Password:</Label>
+                        <Label for='password' sm={2}>Password:</Label>
                         <Col sm={8}>
-                            <Input type="username" id="password" placeholder="password"
+                            <Input type='username' id='password' placeholder='password'
                                    onChange={this.handlePasswordChange.bind(this)}/>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="name" sm={2}>Name:</Label>
+                        <Label for='name' sm={2}>Name:</Label>
                         <Col sm={8}>
-                            <Input type="name" id="password" placeholder="Name"
+                            <Input type='name' id='password' placeholder='Name'
                                    onChange={this.handleNameChange.bind(this)}/>
                         </Col>
                     </FormGroup>
@@ -74,13 +98,13 @@ export default class WorkerAdd extends React.Component {
                         <Col sm={8}>
                             <FormGroup check>
                                 <Label check>
-                                    <Input type="radio" name="role" onChange={() => this.handleRoleChange(2)}/>{' '}
+                                    <Input type='radio' name='role' onChange={() => this.handleRoleChange(2)}/>{' '}
                                     Driver
                                 </Label>
                             </FormGroup>
                             <FormGroup check>
                                 <Label check>
-                                    <Input type="radio" name="role" onChange={() => this.handleRoleChange(3)}/>{' '}
+                                    <Input type='radio' name='role' onChange={() => this.handleRoleChange(3)}/>{' '}
                                     Dispatcher
                                 </Label>
                             </FormGroup>
@@ -88,11 +112,11 @@ export default class WorkerAdd extends React.Component {
                     </FormGroup>
                     {this.state.roleId === 2 ?
                         <FormGroup row>
-                            <Label for="categoryCheckbox" sm={2}>Checkboxes:</Label>
+                            <Label for='categoryCheckbox' sm={2}>Checkboxes:</Label>
                             <Col sm={8}>
                                 {categories.map(({type, id}) => <CustomInput key={type}
                                                                              onChange={() => this.handleCategoryChange(id)}
-                                                                             type="checkbox"
+                                                                             type='checkbox'
                                                                              id={type}
                                                                              label={type}/>)}
                             </Col>

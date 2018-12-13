@@ -1,5 +1,5 @@
-import moment from "moment";
-import {action, observable} from "mobx";
+import moment from 'moment';
+import {action, observable} from 'mobx';
 
 const CONTEXT_URL = process.env.REACT_APP_API_URL || '/JetSpace';
 
@@ -73,9 +73,8 @@ export default class OrderStore {
             body: JSON.stringify(order),
             headers: {'Content-Type': 'application/json'}
         };
-        fetch(CONTEXT_URL + "/api/orders", params)
+        fetch(CONTEXT_URL + '/api/orders', params)
             .then(response => response.json())
-            .then(message => console.log(message))
             .catch(console.error)
     }
 
@@ -83,7 +82,7 @@ export default class OrderStore {
      * Find all orders
      */
     findAll() {
-        fetch(CONTEXT_URL + "/api/orders")
+        fetch(CONTEXT_URL + '/api/orders')
             .then(response => response.json())
             .then(action(result => this.orders = result))
             .catch(console.error)
@@ -93,7 +92,7 @@ export default class OrderStore {
      * Find all by user id
      */
     findAllByDriverId(driverId) {
-        fetch(CONTEXT_URL + "/api/orders/driver=" + driverId)
+        fetch(CONTEXT_URL + '/api/orders/driver=' + driverId)
             .then(response => response.json())
             .then(action(result => this.orders = result))
             .catch(console.error)
@@ -102,11 +101,12 @@ export default class OrderStore {
     /**
      * Delete by id
      */
-    static deleteById(id) {
+    deleteById(id) {
         const param = {
             method: 'DELETE'
         };
-        fetch(CONTEXT_URL + "/api/orders/" + id, param)
+        fetch(CONTEXT_URL + '/api/orders/' + id, param)
+            .then(action(this.orders.splice(this.orders.findIndex(el => el.id === id), 1)))
             .catch(console.error)
     }
 }

@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css';
+import './index.css'
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -7,11 +8,11 @@ import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'mobx-react';
 
 import Main from './components/Main';
-import AuthStore from "./stores/AuthStore";
-import WorkerStore from "./stores/WorkerStore";
-import CarStore from "./stores/CarStore";
-import OrderStore from "./stores/OrderStore";
-import CategoryStore from "./stores/CategoryStore";
+import AuthStore from './stores/AuthStore';
+import WorkerStore from './stores/WorkerStore';
+import CarStore from './stores/CarStore';
+import OrderStore from './stores/OrderStore';
+import CategoryStore from './stores/CategoryStore';
 
 const stores = {
     authStore: new AuthStore(),
@@ -23,7 +24,7 @@ const stores = {
 
 ReactDOM.render(
     <Provider {...stores}>
-        <BrowserRouter basename="/JetSpace">
+        <BrowserRouter basename='/JetSpace'>
             <Main/>
         </BrowserRouter>
     </Provider>,

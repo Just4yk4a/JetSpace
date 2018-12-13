@@ -1,12 +1,11 @@
 package by.intexsoft.ryabov.controller;
 
 import by.intexsoft.ryabov.entity.Category;
-import by.intexsoft.ryabov.entity.User;
 import by.intexsoft.ryabov.service.ICategoryService;
-import by.intexsoft.ryabov.service.IUserService;
-import by.intexsoft.ryabov.service.impl.UserService;
-import jdk.nashorn.internal.parser.JSONParser;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
