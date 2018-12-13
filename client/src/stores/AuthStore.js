@@ -1,4 +1,4 @@
-import {action, observable} from "mobx";
+import {action, observable} from 'mobx';
 
 const CONTEXT_URL = process.env.REACT_APP_API_URL || '/JetSpace';
 
@@ -64,7 +64,7 @@ export default class AuthStore {
                 sessionStorage.setItem('user', JSON.stringify(user));
                 this.user = user;
             }))
-            .catch(action(error => this.error = "Invalid username or password"));
+            .catch(action(error => this.error = 'Invalid username or password'));
     }
 
 

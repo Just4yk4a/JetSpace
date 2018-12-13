@@ -23,7 +23,7 @@ public class Order extends AbstractPersistable<Integer> {
     public Date date;
 
     /**
-     * Contains {@link Driver} for order
+     * Contains {@link User} for order
      */
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "driver_id")

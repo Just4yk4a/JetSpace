@@ -1,9 +1,12 @@
-import "./index.css"
+import './index.css'
 
 import React from 'react';
-import {Table} from "reactstrap";
-import {inject, observer} from "mobx-react";
+import {Table} from 'reactstrap';
+import {inject, observer} from 'mobx-react';
 
+/**
+ * Class with workers
+ */
 @inject('workerStore')
 @observer
 export default class Workers extends React.Component {
@@ -12,8 +15,29 @@ export default class Workers extends React.Component {
         this.props.workerStore.getAll();
     }
 
-    delete(id){
+    /**
+     * Delete user by id
+     */
+    delete(id) {
         this.props.workerStore.deleteById(id);
+    }
+
+    /**
+     * Map users to row component
+     */
+    loadUser() {
+        const {users} = this.props.workerStore;
+        return users.map(user => (
+            <tr key={user.id}>
+                <td>{user.name}</td>
+                <td>{user.username}</td>
+                <td>{user.role.type}</td>
+                <td>
+                    <button onClick={() => this.delete(user.id)}>X</button>
+                    <button>Edit</button>
+                </td>
+            </tr>
+        ))
     }
 
     render() {
@@ -34,20 +58,5 @@ export default class Workers extends React.Component {
                 </Table>
             </div>
         );
-    }
-
-    loadUser() {
-        const {users} = this.props.workerStore;
-        return users.map(user => (
-            <tr key={user.id}>
-                <td>{user.name}</td>
-                <td>{user.username}</td>
-                <td>{user.role.type}</td>
-                <td>
-                    <button onClick={() => this.delete(user.id)}>X</button>
-                    <button>Edit</button>
-                </td>
-            </tr>
-        ))
     }
 }

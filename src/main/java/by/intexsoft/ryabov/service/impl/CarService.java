@@ -36,4 +36,20 @@ public class CarService implements ICarService {
     public Car findById(int id) {
         return carRepository.findById(id).get();
     }
+
+    /**
+     * Add {@link Car} to DB
+     */
+    @Override
+    public Car save(Car order) {
+        return carRepository.save(order);
+    }
+
+    /**
+     * Delete by id
+     */
+    @Override
+    public void delete(int id) {
+        carRepository.deleteById(id);
+    }
 }

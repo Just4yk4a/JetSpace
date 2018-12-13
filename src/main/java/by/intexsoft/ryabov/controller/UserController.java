@@ -25,7 +25,7 @@ public class UserController {
     }
 
     /**
-     * Get all users
+     * Get all {@link User}s
      */
     @GetMapping
     public List<User> getAll() {
@@ -33,7 +33,7 @@ public class UserController {
     }
 
     /**
-     * Get users
+     * Get {@link User}s by date
      */
     @GetMapping(value = "/{date}")
     public List<User> getUsersByDate(@PathVariable("date") long date) {
@@ -42,7 +42,7 @@ public class UserController {
     }
 
     /**
-     * Add new user and returns saved object
+     * Add new {@link User} and returns saved object
      */
     @PostMapping
     public User create(@RequestBody User user) {
@@ -53,7 +53,7 @@ public class UserController {
     }
 
     /**
-     * Delete user
+     * Delete {@link User} by id
      */
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") int id) {

@@ -18,4 +18,14 @@ public interface ICarService {
      * Find {@link Car} by id
      */
     Car findById(int id);
+
+    /**
+     * Add {@link Car} to DB
+     */
+    Car save(Car order);
+
+    /**
+     * Delete by id
+     */
+    void delete(int id);
 }

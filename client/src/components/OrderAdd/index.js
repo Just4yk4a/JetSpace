@@ -1,18 +1,29 @@
+import './index.css';
+
 import React from 'react';
-import DatePicker from "react-datepicker";
-import moment from "moment";
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
-import "react-datepicker/dist/react-datepicker.css";
-import {inject, observer} from "mobx-react";
-import {Button, Col, Form, FormGroup, Input, Label} from "reactstrap";
+import 'react-datepicker/dist/react-datepicker.css';
+import {inject, observer} from 'mobx-react';
+import {Button, Col, Form, FormGroup, Input, Label} from 'reactstrap';
 
+/**
+ * Add new order
+ */
 @inject('orderStore')
 @observer
 export default class OrderAdd extends React.Component {
+    /**
+     * Date handle
+     */
     handleChangeDate(date) {
         this.props.orderStore.setDate(date);
     }
 
+    /**
+     * Phone handle
+     */
     handlePhoneChange({target: {value}}) {
         this.props.orderStore.setPhone(value);
     };
@@ -20,26 +31,26 @@ export default class OrderAdd extends React.Component {
     render() {
         return (
             <div>
-                <h1>Order</h1>
-                <Form>
+                <h1 className={'header'}>Order</h1>
+                <Form className={'order-form'}>
                     <FormGroup row>
-                        <Label for="phone" sm={2}>Number:</Label>
+                        <Label for='phone' sm={2}>Number:</Label>
                         <Col sm={8}>
-                            <Input type="phone" id="phone" placeholder="PHONE"
+                            <Input type='phone' id='phone' placeholder='PHONE'
                                    onChange={this.handlePhoneChange.bind(this)}/>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="date" sm={2}>Date:</Label>
+                        <Label for='date' sm={2}>Date:</Label>
                         <Col sm={8}>
                             <DatePicker
                                 selected={this.props.orderStore.order.date}
                                 onChange={this.handleChangeDate.bind(this)}
                                 minDate={moment()}
-                                maxDate={moment().add(7, "days")}
-                                locale="en-gb"
-                                dropdownMode="select"
-                                placeholderText="Select a date"/>
+                                maxDate={moment().add(7, 'days')}
+                                locale='en-gb'
+                                dropdownMode='select'
+                                placeholderText='Select a date'/>
                         </Col>
                     </FormGroup>
                     <Button onClick={() => this.props.orderStore.checkout()}>Add</Button>

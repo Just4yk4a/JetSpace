@@ -1,4 +1,4 @@
-import {action, observable} from "mobx";
+import {action, observable} from 'mobx';
 
 const CONTEXT_URL = process.env.REACT_APP_API_URL || '/JetSpace';
 
@@ -83,11 +83,11 @@ export default class WorkerStore {
             body: JSON.stringify(this.newUser),
             headers: {'Content-Type': 'application/json; charset=UTF-8'}
         };
-        fetch(CONTEXT_URL + "/api/users", param)
+        fetch(CONTEXT_URL + '/api/users', param)
             .then(response => response.json())
             .then(console.log)
             .catch(action((err) => {
-                this.error = "Username is already in use";
+                this.error = 'Username is already in use';
             }));
     }
 
@@ -95,7 +95,7 @@ export default class WorkerStore {
      * Get all users
      */
     getAll() {
-        fetch(CONTEXT_URL + "/api/users")
+        fetch(CONTEXT_URL + '/api/users')
             .then(response => response.json())
             .then(action(users => this.users = users))
             .catch(error => console.error(error))
@@ -108,7 +108,7 @@ export default class WorkerStore {
         const param = {
             method: 'DELETE'
         };
-        fetch(CONTEXT_URL + "/api/users/" + id, param)
+        fetch(CONTEXT_URL + '/api/users/' + id, param)
             .then(message => console.log(message))
             .catch(console.error)
     }
@@ -117,7 +117,7 @@ export default class WorkerStore {
      * Get all free users by date
      */
     getFreeUsersByDate(date) {
-        return (fetch(CONTEXT_URL + "/api/users/" + date)
+        return (fetch(CONTEXT_URL + '/api/users/' + date)
             .then(response => response.json())
             .catch(console.error));
     }

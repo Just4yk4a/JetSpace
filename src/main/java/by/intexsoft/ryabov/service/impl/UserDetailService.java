@@ -15,13 +15,13 @@ import java.util.Set;
  * Service for auth user
  */
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailService implements UserDetailsService {
     private final UserService userService;
 
     /**
      * Constructor
      */
-    public UserDetailsServiceImpl(UserService userService) {
+    public UserDetailService(UserService userService) {
         this.userService = userService;
     }
 

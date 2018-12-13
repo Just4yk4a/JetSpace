@@ -1,9 +1,12 @@
-import "./index.css";
+import './index.css';
 
-import React from "react";
-import Header from "../Header";
-import Router from "../Router";
+import React from 'react';
+import Header from '../Header';
+import Router from '../Router';
 
+/**
+ * Main class
+ */
 export default class Main extends React.Component {
     render() {
         return (
